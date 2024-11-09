@@ -1,5 +1,5 @@
 // import { UserService } from "src/users/application/services/UserService";
-import { UserRequest } from "src/application/dtos/UserRequest";
+import { UserRequest } from "src/user/application/dtos/UserRequest";
 // import { BaseResponse } from "src/users/application/dtos/BaseResponse";
 
 import { Controller, Post, Res, Body, HttpStatus, Inject } from "@nestjs/common";

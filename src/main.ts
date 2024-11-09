@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { AppModule } from 'src/AppModule'
 import { PORT, API_VERSION } from 'src/config';
-import { RpcCustomExceptionFilter } from 'src/infrastructure/exceptions/ExceptionFilter';
+import { RpcCustomExceptionFilter } from 'src/exceptions/ExceptionFilter';
 
 async function bootstrap() {
   const logger = new Logger('GATEWAY');
