@@ -2,20 +2,20 @@ import { Controller, Post, Inject, Body, Res, HttpStatus } from "@nestjs/common"
 import { ClientProxy } from "@nestjs/microservices";
 import { Response } from "express";
 
-import { ContactRequestDTO } from "src/user/application/dtos/ContactRequestDTO";
+import { ProductDTO } from "src/payment/application/dtos/ProductDTO";
 
 import { lastValueFrom } from "rxjs";
 
-@Controller("/contacts")
-export class CreateContactController {
+@Controller("/payments")
+export class CreateOrderController {
     constructor(
-        @Inject("USERS_TRANSPORT") private readonly client: ClientProxy,
+        @Inject("PAYMENT_TRANSPORT") private readonly client: ClientProxy,
     ){}
 
-    @Post("/create-contact")
-    public async createContact(@Body() contact: ContactRequestDTO, @Res() res: Response) {
+    @Post("/create-order")
+    public async createContact(@Body() product: ProductDTO , @Res() res: Response) {
         try {
-            const result = await lastValueFrom(this.client.send('create-contact', contact));
+            const result = await lastValueFrom(this.client.send('create-order', product));
             res.status(HttpStatus.OK).json({ message: result });
         } catch (error) {
             res.status(HttpStatus.BAD_REQUEST).json({ message: error })
